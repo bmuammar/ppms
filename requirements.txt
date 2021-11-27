@@ -5,3 +5,6 @@ requests
 qrcode
 pyzbar
 werkzeug
+gunicorn
+psycopg2
+requests
