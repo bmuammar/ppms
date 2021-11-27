@@ -39,7 +39,8 @@ app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
 # Configure CS50 Library to use SQLite database
-db = SQL("sqlite:///final.db")
+#db = SQL("sqlite:///final.db")
+db = SQL(os.getenv("DATABASE_URL"))
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
