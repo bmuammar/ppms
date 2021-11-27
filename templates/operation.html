@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+: Equipment Maintenance History
+{% endblock %}
+
+{% block main %}
+
+    <form action="/operation" method="post">
+
+        <div class="form-group">
+
+            <select name="equipment" class="form-control">
+            <option disabled selected value="">Equipment</option>
+            {% for equipment in equipments %}
+                <option value="{{ equipment.equipment_name }}">{{ equipment.equipment_name }}</option>
+            {% endfor %}
+            </select>
+
+            <input autocomplete="off" autofocus class="form-control" name="instruction" placeholder="Operation Instruction" type="text">
+
+        </div>
+
+        <button class="btn btn-primary" type="submit">Add Instruction</button>
+    </form>
+
+    {% if operation %}
+            <main class="container p-5">
+        <table class="table table-striped">
+        <thead>
+            <tr>
+            <th>Equipment Name</th>
+            <th>Operation Instruction</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for no in operation %}
+        <tr>
+            <td>{{ no.equipment_name }}</td>
+            <td>{{ no.instruction }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        </main>
+    {% endif %}
+
+{% endblock %}

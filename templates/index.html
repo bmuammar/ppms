@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block main %}
+
+<style>
+    .temp
+    {
+        font-size: 18pt;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+    }
+</style>
+
+<main class="container p-5">
+    <table class="table ">
+          <tr>
+            <th>Equipment Name</th>
+            <th>Equipment QR Code</th>
+          </tr>
+          
+          {% for equipment in equipments %}
+          <tr>
+            <td class = "temp"> {{ equipment.equipment_name }}  </td>
+            <td> <img src="{{url_for('static', filename= '/uploads/' + equipment.equipment_name + '.jpg')}}"  width="200" height="200" alt="qrcode"/> </td>
+          </tr>
+          {% endfor %}
+    </table>
+</main>
+{% endblock %}

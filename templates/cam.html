@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block title %}
+: Cam
+{% endblock %}
+
+{% block main %}
+    <form action="/cam" method="post">
+        <button class="btn btn-primary" type="submit">Open Cam</button>
+    </form>
+{% endblock %}

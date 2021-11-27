@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block title %}
+: Equipment Maintenance History
+{% endblock %}
+
+{% block main %}
+
+    <form action="/history" method="post">
+
+        <div class="form-group">
+
+            <select name="equipment" class="form-control">
+            <option disabled selected value="">Equipment</option>
+            {% for equipment in equipments %}
+                <option value="{{ equipment.equipment_name }}">{{ equipment.equipment_name }}</option>
+            {% endfor %}
+            </select>
+
+            <select id="month" name = "month" class="form-control">
+                <option disabled selected value="">Month</option>
+                <option value="Jan">January
+                <option value="Feb">February
+                <option value="Mar">March
+                <option value="Apr">April
+                <option value="May">May
+                <option value="Jun">June
+                <option value="Jul">July
+                <option value="Aug">August
+                <option value="Sep">September
+                <option value="Oct">October
+                <option value="Nov">November
+                <option value="Dec">December
+            </select>
+
+            <select id="year" name="year" class="form-control">
+                <option disabled selected value="">Year</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+            </select>
+
+            <input autocomplete="off" autofocus class="form-control" name="description" placeholder="Maintenance Description" type="text">
+
+        </div>
+
+        <button class="btn btn-primary" type="submit">Add Activity</button>
+    </form>
+
+    {% if history %}
+            <main class="container p-5">
+        <table class="table table-striped">
+        <thead>
+            <tr>
+            <th>Equipment Name</th>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hist in history %}
+        <tr>
+            <td>{{ hist.equipment_name }}</td>
+            <td>{{ hist.month }}</td>
+            <td>{{ hist.year }}</td>
+            <td>{{ hist.description }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        </main>
+    {% endif %}
+
+{% endblock %}

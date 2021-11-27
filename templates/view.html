@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+ 
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block main %}
+<main class="container p-5"> 
+    <form method="post" action="/view" enctype="multipart/form-data">
+            <dl>
+                <p>
+                    <input type="file" name="file" class="form-control" autocomplete="off">
+                </p>
+            </dl>
+            <p>
+                <input type="submit" value="Submit" class="btn btn-info">
+            </p>
+    </form>
+
+    {% if operation %}
+        <main class="container p-5">
+        <table class="table table-striped">
+        <thead>
+            <tr>
+            <th>Equipment Name</th>
+            <th>Instruction</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for operate in operation %}
+        <tr>
+            <td>{{ operate.equipment_name }}</td>
+            <td>{{ operate.instruction }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        </main>
+    {% endif %}
+
+    {% if history %}
+        <main class="container p-5">
+        <table class="table table-striped">
+        <thead>
+            <tr>
+            <th>Equipment Name</th>
+            <th>Month</th>
+            <th>Year</th>
+            <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hist in history %}
+        <tr>
+            <td>{{ hist.equipment_name }}</td>
+            <td>{{ hist.month }}</td>
+            <td>{{ hist.year }}</td>
+            <td>{{ hist.description }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        </main>
+    {% endif %}
+</main>
+
+{% endblock %}
