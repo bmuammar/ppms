@@ -50,6 +50,3 @@ Qr Code pinned on that equipment.
 - Cam Page:
 
     In this page there is a button to open the device camera and scan the QR Code pinned on the equipment to view its maintenance history and operation regime.
-
-
-Thank You Very Much And this Was CS50 =D ! 
